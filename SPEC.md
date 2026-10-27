@@ -278,7 +278,7 @@ Não implementar agora. Fica registrado para orientar decisões de arquitetura:
 
 | Fatia | Status |
 |---|---|
-| 1 — Base | 🟨 código pronto; falta deploy na Vercel e teste no celular |
+| 1 — Base | ✅ concluída — publicada em https://encruzilhada-mvp-5jsq.vercel.app |
 | 2 — Perfil + problemas | ⬜ não iniciada |
 | 3 — Esclarecimento + opções | ⬜ não iniciada |
 | 4 — Análise + comparação | ⬜ não iniciada |
