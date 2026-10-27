@@ -58,7 +58,7 @@ supabase/
 - **Segurança:** chaves de API de IA nunca vão para o cliente. Toda chamada à IA acontece em Route Handlers ou Server Actions, e verifica se o usuário está logado.
 - **RLS em todas as tabelas.** Cada usuário só lê e escreve os próprios dados.
 - **Banco:** toda mudança de schema é uma migration SQL em `supabase/migrations/`. Nunca alterar o banco manualmente.
-- **IA:** usar `generateObject` do AI SDK com schemas Zod para respostas estruturadas. Em caso de erro (JSON inválido, timeout, limite de requisições do plano gratuito), mostrar mensagem amigável e botão "Tentar de novo".
+- **IA:** usar `generateText` com `output: Output.object({ schema })` do AI SDK 7 (o `generateObject` está obsoleto), com schemas Zod, para respostas estruturadas. Toda chamada passa por `src/lib/ai/generate.ts`. Em caso de erro (JSON inválido, timeout, limite de requisições do plano gratuito), mostrar mensagem amigável e botão "Tentar de novo".
 - **Provedor e modelos:** vêm das variáveis `AI_PROVIDER`, `AI_MODEL_FAST` e `AI_MODEL_SMART`. Nunca fixar no código. Consulte a documentação do provedor para os IDs atuais dos modelos.
 - **Modo mock:** com `AI_MOCK=true`, as rotas de IA retornam respostas falsas válidas (de `ai/mock.ts`) sem chamar nenhuma API. Usar durante o desenvolvimento das telas para não gastar o limite gratuito.
 - **Idioma:** interface em português do Brasil; código (variáveis, funções, tabelas, colunas) em inglês.

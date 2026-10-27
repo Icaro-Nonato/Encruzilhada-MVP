@@ -280,7 +280,7 @@ Não implementar agora. Fica registrado para orientar decisões de arquitetura:
 |---|---|
 | 1 — Base | ✅ concluída — publicada em https://encruzilhada-mvp-5jsq.vercel.app |
 | 2 — Perfil + problemas | ✅ concluída |
-| 3 — Esclarecimento + opções | ⬜ não iniciada |
+| 3 — Esclarecimento + opções | ✅ concluída |
 | 4 — Análise + comparação | ⬜ não iniciada |
 | 5 — Decisão + revisão | ⬜ não iniciada |
 | 6 — Acabamento | ⬜ não iniciada |

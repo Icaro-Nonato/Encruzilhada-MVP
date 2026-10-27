@@ -39,6 +39,44 @@ export type Database = {
   }
   public: {
     Tables: {
+      options: {
+        Row: {
+          created_at: string
+          id: string
+          problem_id: string
+          source: string
+          summary: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          problem_id: string
+          source: string
+          summary: string
+          title: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          problem_id?: string
+          source?: string
+          summary?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "options_problem_id_fkey"
+            columns: ["problem_id"]
+            isOneToOne: false
+            referencedRelation: "problems"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       problems: {
         Row: {
           clarifications: Json
