@@ -1,5 +1,6 @@
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { NextResponse, type NextRequest } from "next/server";
+import { getPostLoginPath } from "@/lib/profile";
 import { createClient } from "@/lib/supabase/server";
 
 // Destino do link de confirmação enviado por e-mail.
@@ -12,15 +13,16 @@ export async function GET(request: NextRequest) {
 
   const supabase = await createClient();
 
-  let error: unknown = new Error("Link inválido");
-  if (code) {
-    ({ error } = await supabase.auth.exchangeCodeForSession(code));
-  } else if (tokenHash && type) {
-    ({ error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type }));
-  }
+  const result = code
+    ? await supabase.auth.exchangeCodeForSession(code)
+    : tokenHash && type
+      ? await supabase.auth.verifyOtp({ token_hash: tokenHash, type })
+      : null;
+  const user = result?.data.user;
 
-  if (error) {
+  if (!result || result.error || !user) {
     return NextResponse.redirect(`${origin}/login?erro=confirmacao`);
   }
-  return NextResponse.redirect(`${origin}/problemas`);
+  const path = await getPostLoginPath(supabase, user.id);
+  return NextResponse.redirect(`${origin}${path}`);
 }

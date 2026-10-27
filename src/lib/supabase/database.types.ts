@@ -39,7 +39,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      problems: {
+        Row: {
+          clarifications: Json
+          created_at: string
+          description: string
+          id: string
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          clarifications?: Json
+          created_at?: string
+          description: string
+          id?: string
+          status?: string
+          title: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          clarifications?: Json
+          created_at?: string
+          description?: string
+          id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          constraints: string
+          current_situation: string
+          goals: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          constraints?: string
+          current_situation?: string
+          goals?: string
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          constraints?: string
+          current_situation?: string
+          goals?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

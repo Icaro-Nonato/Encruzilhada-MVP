@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { translateAuthError } from "@/lib/auth-errors";
+import { getPostLoginPath } from "@/lib/profile";
 import { createClient } from "@/lib/supabase/server";
 import { loginSchema, signupSchema } from "@/lib/validation/auth";
 
@@ -18,12 +19,12 @@ export async function login(
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword(parsed.data);
+  const { data, error } = await supabase.auth.signInWithPassword(parsed.data);
   if (error) {
     return { error: translateAuthError(error) };
   }
 
-  redirect("/problemas");
+  redirect(await getPostLoginPath(supabase, data.user.id));
 }
 
 export async function signup(
@@ -48,8 +49,9 @@ export async function signup(
   }
 
   // Com confirmação de e-mail desativada, o Supabase já devolve a sessão.
+  // Conta nova sempre tem perfil vazio, então vai direto para /perfil.
   if (data.session) {
-    redirect("/problemas");
+    redirect("/perfil");
   }
 
   return {

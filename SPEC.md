@@ -279,7 +279,7 @@ Não implementar agora. Fica registrado para orientar decisões de arquitetura:
 | Fatia | Status |
 |---|---|
 | 1 — Base | ✅ concluída — publicada em https://encruzilhada-mvp-5jsq.vercel.app |
-| 2 — Perfil + problemas | ⬜ não iniciada |
+| 2 — Perfil + problemas | ✅ concluída |
 | 3 — Esclarecimento + opções | ⬜ não iniciada |
 | 4 — Análise + comparação | ⬜ não iniciada |
 | 5 — Decisão + revisão | ⬜ não iniciada |
